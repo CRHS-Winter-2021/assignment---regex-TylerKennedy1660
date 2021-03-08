@@ -10,19 +10,22 @@ import re
 #B# Add a condition so that no blanks are printed.
 #C# Count the number of email addresses found and print a final output line.
 
+c = 0
+
 def reEmail(fname):
   
   fhand = open(fname,'r')
+  global c
   for line in fhand:
-    extr = re.findall('\S*@\S*',line)
+    extr = re.findall('\S+@\S+',line)
     if len(extr): 
       print(extr)
-        
+      c += 1
 
   print()
 
-#reEmail('rural-staff.txt')
-    
+reEmail('rural-staff.txt')
+print(c)
 
 '''### Task 1 Results for 
 >reEmail('rural-staff.txt')
@@ -39,7 +42,7 @@ There were 89 email addresses in rural-staff.txt
 def reAward(fname):
   fhand = open(fname, 'r')
   for line in fhand:
-    extr = re.findall('-.*', line)
+    extr = re.findall('-(.*)', line)
     if len(extr):
       print(extr)
 
@@ -61,7 +64,7 @@ def rePhone(fname):
     if len(extr):
       print(extr)
 
-rePhone('rural-staff.txt')
+#rePhone('rural-staff.txt')
 
 
 
